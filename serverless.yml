@@ -1,0 +1,9 @@
+service: bloodhound-bot
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+functions:
+  message:
+    handler: events.message
