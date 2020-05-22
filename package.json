@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Jaryt/Bloodhound-Bot#readme",
   "dependencies": {
+    "aws-sdk": "^2.682.0",
+    "buffer": "^5.6.0",
     "crypto": "^1.0.1"
   }
 }
