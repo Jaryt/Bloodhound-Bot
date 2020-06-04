@@ -1,8 +1,8 @@
 {
   "name": "bloodhound-bot",
   "version": "1.0.0",
-  "description": "Bloodhound is a slack bot utilized for a data deletion process",
-  "main": "events.js",
+  "description": "Slack bot that will help track and handle bot interactions",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/Jaryt/Bloodhound-Bot.git"
   },
+  "keywords": [
+    "bot",
+    "slack",
+    "zendesk"
+  ],
   "author": "Angelisa Candler, Jaryt Bustard",
   "license": "ISC",
   "bugs": {
@@ -17,6 +22,8 @@
   },
   "homepage": "https://github.com/Jaryt/Bloodhound-Bot#readme",
   "dependencies": {
-    "crypto": "^1.0.1"
+    "@slack/events-api": "^2.3.3",
+    "@slack/rtm-api": "^5.0.4",
+    "@slack/web-api": "^5.9.0"
   }
 }
