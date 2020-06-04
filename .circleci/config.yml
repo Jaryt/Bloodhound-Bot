@@ -18,9 +18,9 @@ jobs:
             - run:
                 name: Upload to EC2
                 command: |
-                  echo $EC2_HOST >> ~/.ssh/.known_hosts
-                  scp bloodhound.tar.gz $EC2_USER:$EC2_WORKSPACE
-                  ssh $EC2_USER
+                  echo $EC2_HOST >> ~/.ssh/known_hosts
+                  scp bloodhound.tar.gz ${EC2_USER}@${EC2_ADDRESS}:/home/$EC2_USER
+                  ssh ${EC2_USER}@${EC2_ADDRESS}
                   tar -xvzf bloodhound.tar.gz
                   exit
 
