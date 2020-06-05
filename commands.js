@@ -31,11 +31,12 @@ const triggerCommand = (event, command, state) => {
       return 'pong';
     },
     track: () => {
-      if (state.trackSessions[event.user]) {
+      if (state.trackSessions[123, event.user]) {
         return 'Tracking session already exists for this user';
       } 
       
-      state.trackSessions[event.user] = startTracsking();
+      state.trackSessions[123, event.user] = 'hello';
+      return state.trackSessions[123, event.user];
     },
     complete: () => {
 
