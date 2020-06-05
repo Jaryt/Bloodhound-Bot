@@ -24,8 +24,8 @@ jobs:
                   echo $EC2_HOST >> ~/.ssh/known_hosts
                   ssh ec2-user@${EC2_ADDRESS} rm -rf bloodhound/*
                   scp bloodhound.tar.gz ec2-user@${EC2_ADDRESS}:/home/ec2-user/bloodhound
-                  ssh ec2-user@${EC2_ADDRESS} |
-                   tar -xvzf project/bloodhound.tar.gz bloodhound/ &&
+                  ssh ec2-user@${EC2_ADDRESS}:/home/ec2-user/bloodhound |
+                   tar -xvzf project/bloodhound.tar.gz &&
                    ./setup.sh && exit
 
 workflows:
