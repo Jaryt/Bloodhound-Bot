@@ -14,7 +14,7 @@ jobs:
                 command: npm install
             - run:
                 name: Compress source
-                command: tar -zcvf bloodhound.tar.gz node_modules/ *.js
+                command: tar -zcvf bloodhound.tar.gz node_modules/ *.js setup.sh
             - add_ssh_keys:
                 fingerprints:
                   - "76:ce:2e:90:ed:8b:8d:1e:e3:c0:47:b7:09:5e:af:ef"
