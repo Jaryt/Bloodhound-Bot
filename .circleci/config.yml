@@ -14,7 +14,7 @@ jobs:
                 command: npm install
             - run:
                 name: Compress source
-                command: tar -zcvf bloodhound.tar.gz node_modules/ *.js setup.sh
+                command: tar -zcvf bloodhound.tar.gz node_modules/ setup.sh *.js
             - add_ssh_keys:
                 fingerprints:
                   - "76:ce:2e:90:ed:8b:8d:1e:e3:c0:47:b7:09:5e:af:ef"
@@ -22,8 +22,12 @@ jobs:
                 name: Upload to EC2
                 command: |
                   echo $EC2_HOST >> ~/.ssh/known_hosts
+                  ssh ec2-user@${EC2_ADDRESS} rm -rf bloodhound/*
                   scp bloodhound.tar.gz ec2-user@${EC2_ADDRESS}:/home/ec2-user/bloodhound
-                  ssh ec2-user@${EC2_ADDRESS} cd bloodhound && tar -xvzf project/bloodhound.tar.gz && ./setup.sh && exit
+                  ssh ec2-user@${EC2_ADDRESS} |
+                   cd bloodhound && 
+                   tar -xvzf project/bloodhound.tar.gz &&
+                   ./setup.sh
 
 workflows:
     build-and-deploy:
