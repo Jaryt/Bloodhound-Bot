@@ -27,6 +27,9 @@ const triggerCommand = (event, command, state) => {
 
       return 'Reset bloodhound tracking.'
     },
+    ping: () => {
+      return 'pong';
+    },
     track: () => {
       if (state.trackSessions[event.user]) {
         return 'Tracking session already exists for this user';
