@@ -22,7 +22,7 @@ jobs:
                 name: Upload to EC2
                 command: |
                   echo $EC2_HOST >> ~/.ssh/known_hosts
-                  scp bloodhound.tar.gz ec2-user@${EC2_ADDRESS}:/home/ec2-user
+                  scp bloodhound.tar.gz ec2-user@${EC2_ADDRESS}:/home/ec2-user/bloodhound
                   ssh ec2-user@${EC2_ADDRESS} cd bloodhound && tar -xvzf project/bloodhound.tar.gz && ./setup.sh && exit
 
 workflows:
