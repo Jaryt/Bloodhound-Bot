@@ -15,7 +15,7 @@ module.exports.initSlack = async (messageHandler) => {
     const response = messageHandler(event);
 
     if (response) {
-      await client.chat.postMessage({ text: response, channel: event.channel });
+      client.chat.postMessage({ text: response, channel: event.channel });
     }
   });
 }

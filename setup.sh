@@ -1,1 +1,3 @@
-echo "Hello!"
+#!/bin/bash
+
+node index.js
