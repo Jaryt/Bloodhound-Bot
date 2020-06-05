@@ -31,11 +31,11 @@ const triggerCommand = (event, command, state) => {
       return 'pong';
     },
     track: () => {
-      if (state.trackSessions[123, event.user]) {
+      if (state.trackSessions[arg, event.user]) {
         return 'Tracking session already exists for this user';
       } 
       
-      state.trackSessions[123, event.user] = 'hello';
+      state.trackSessions[arg, event.user] = 'hello';
       return state.trackSessions[123, event.user];
     },
     complete: () => {
@@ -46,7 +46,7 @@ const triggerCommand = (event, command, state) => {
   const trigger = commands[command];
 
   if (trigger) {
-    return [trigger(), state];
+    return ['```event```', state];
   } else {
     return [`Command ${command} does not exist`, state];
   }
