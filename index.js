@@ -5,7 +5,7 @@ const util = require('util');
 const messageHandler = (event) => {
   let state = {
     target: undefined,
-    tracking: {}
+    trackSessions: {}
   }
 
   if (event.text.startsWith('bloodhound')) {
