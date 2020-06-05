@@ -8,7 +8,11 @@ module.exports.initSlack = async (messageHandler) => {
   const port = process.env.PORT || 3000;
 
   // Init Slack adapters
-  const slackEvents = await createEventAdapter(slackSigningSecret).start(port);
+  const slackEvents = createEventAdapter(slackSigningSecret);
+  const server = await slackEvents.start(port);
+
+  console.log(`Listening for events on ${server.address().port}`);
+
   const client = new WebClient(slackToken);
 
   slackEvents.on('message', (event) => {
@@ -17,5 +21,9 @@ module.exports.initSlack = async (messageHandler) => {
     if (response) {
       client.chat.postMessage({ text: response, channel: event.channel });
     }
+  });
+
+  slackEvents.on('error', (error) => {
+    console.log(error);
   });
 }
