@@ -17,9 +17,9 @@ const beginSession = () => {
 
       return message;
     } else if (event.user === state.target) {
-      console.log(event);
+      return `\`\`\`${event}\`\`\``
     }
-    
+
     console.log(util.inspect(event, showHidden = false, depth = null, color = true));
   }
 }
