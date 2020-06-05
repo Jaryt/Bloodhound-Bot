@@ -46,7 +46,7 @@ const triggerCommand = (event, command, state) => {
   const trigger = commands[command];
 
   if (trigger) {
-    return ['```event```', state];
+    return [trigger(), state];
   } else {
     return [`Command ${command} does not exist`, state];
   }

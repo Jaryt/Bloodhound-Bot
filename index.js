@@ -2,22 +2,26 @@ const { initSlack } = require('./slack-events.js');
 const { triggerCommand } = require('./commands.js');
 const util = require('util');
 
-const messageHandler = (event) => {
+const beginSession = () => {
   let state = {
     target: undefined,
     trackSessions: {}
   }
 
-  if (event.text.startsWith('bloodhound')) {
-    const args = event.text.split(' ').splice(1);
+  return (event) => {
+    if (event.text.startsWith('bloodhound')) {
+      const args = event.text.split(' ').splice(1);
 
-    [message, state] = triggerCommand(event, args[0], state);
+      [message, newState] = triggerCommand(event, args[0], state);
+      state = newState;
 
-    return message;
-  } else if (event.user === state.target) {
-    // do things
-  } 
-  console.log(util.inspect(event, showHidden=false, depth=null, color=true));
+      return message;
+    } else if (event.user === state.target) {
+      console.log(event);
+    }
+    
+    console.log(util.inspect(event, showHidden = false, depth = null, color = true));
+  }
 }
 
-initSlack(messageHandler);  
+initSlack(beginSession());  
